@@ -1,4 +1,4 @@
-
+namespace OOPS;
 public abstract class Shape
 {
     //the outermost abstract class cannot be protected or private, only public or internal.
@@ -28,7 +28,7 @@ public abstract class Shape
     //abstract classes may have non-abstract methods.
     public void ShowShapeInfo()
     {
-        Star star = new Star();
+        Star star = new();
         star.DisplayShapeInfo();
         Console.WriteLine($"Shape Name: {ShapeName}, Area: {GetArea()}");
     }

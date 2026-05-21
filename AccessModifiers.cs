@@ -1,4 +1,6 @@
-﻿public class Animal
+﻿//Namespaces allows us to organize our code and avoid naming conflicts with other classes that may have the same name in different namespaces.
+namespace OOPS;
+public class Animal
 {
     // this property is public, so it can be accessed from anywhere
     public string Name { get; set; } = "Tommy";
