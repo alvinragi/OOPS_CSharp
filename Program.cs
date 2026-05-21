@@ -47,5 +47,19 @@ public class Program
         Drinks drink2 = drinks as Drinks; 
         
 
+        // 4. ParameterPassing.cs
+        string city = "Delhi";
+        // city is passed by value, so the original value of city remains unchanged after the method call.
+        Places.NormalChangeName(city);
+        Console.WriteLine(city);
+        // city is passed by reference, so the original value of city is changed to "Kochi" after the method call.
+        Places.RefChangeName(ref city);
+        Console.WriteLine(city);
+        string city2;
+        // non initialized variable city2 is passed by reference using the out keyword
+        Places.OutChangeName(out city2);
+        Console.WriteLine(city2);
+        Places.InChangeName(city);
+
     }
 }
