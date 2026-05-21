@@ -1,7 +1,8 @@
 namespace OOPS;
 public abstract class Shape
 {
-    //the outermost abstract class cannot be protected or private, only public or internal.
+    // We cannot create an instance of an abstract class.
+    // the outermost abstract class cannot be protected or private, only public or internal.
     // inner abstract classes can have desired access controls. 
     private abstract class InnerShape
     {
@@ -32,7 +33,6 @@ public abstract class Shape
         star.DisplayShapeInfo();
         Console.WriteLine($"Shape Name: {ShapeName}, Area: {GetArea()}");
     }
-
 }
 
 // Circle class inherits from Shape and provides implementation for the abstract members.
@@ -49,3 +49,49 @@ public class Circle : Shape
         return Math.PI * Radius * Radius;
     }
 }
+
+// cannot create object (instantiation) of static class, and all members of a static class must be static as well.
+public static class Rectangle
+{
+    // static methods can be called without creating an instance of the class, 
+    // they belong to the class itself rather than any specific object.
+    public static double GetArea(double width, double height)
+    {
+        return width * height;
+    }
+}
+
+// Partial classes allow us to split the definition of a class across multiple files. 
+// The compiler will combine all parts of the partial class into a single class at compile time.
+// The name of the partial class must be the same across all files, and all parts must be marked with the partial keyword.
+public partial class Triangle : Shape
+{
+    public double Base { get; set; }
+    public double Height { get; set; }
+    public override string ShapeName { get; set; } = "Triangle";
+
+    // Sealed method cannot be overridden by any derived class
+    // it provides a final implementation of the method in the base class.
+    public sealed override double GetArea()
+    {
+        return 0.5 * Base * Height;
+    }
+
+    // new keyword is used to hide the base class method with the same name.
+    public new void ShowShapeInfo()
+    {
+        Console.WriteLine($"This is a triangle shape with base {Base} and height {Height}.");
+    }
+}
+
+public partial class Triangle
+{
+    // Asynchronous method to display triangle information, simulating a long-running operation.
+    public async Task DisplayTriangleInfoAsync()
+    {
+        await Task.Run(() => Console.WriteLine($"Shape Name: {ShapeName}, Area: {GetArea()}"));
+    }
+}
+
+// We cannot inherit from a sealed class, and a sealed class cannot be used as a base class for any other class. 
+//Sealed classes are often used to prevent further inheritance and to provide a final implementation of a class.

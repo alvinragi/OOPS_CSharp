@@ -57,3 +57,16 @@ public class Puppy : Dog
         ShowDetails(); 
     }
 }
+
+
+//internal access modifier is used to restrict access to types and members to the current assembly. 
+//It means that the internal members can only be accessed within the same assembly/project, and not from other assemblies. 
+//This is useful for encapsulating implementation details and preventing external code from accessing certain parts of your codebase.
+
+//protected internal access modifier is a combination of protected and internal. 
+//It allows access to the members from within the same assembly (like internal) and also from derived classes (like protected), 
+//even if those derived classes are in different assemblies. 
+
+//private protected access modifier is a combination of private and protected. 
+//It allows access to the members only within the containing class and derived classes that are in the same assembly. 
+//This means that the members marked as private protected can only be accessed by the containing class and its derived classes, but not from outside the assembly.
