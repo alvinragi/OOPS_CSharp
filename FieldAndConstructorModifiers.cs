@@ -59,3 +59,30 @@ public class Cakes : Desserts
     public string CakeName { get; set; } = "Chocolate Cake";
     public string SecondaryOption = DefaultDessert;
 }
+
+public class Rice
+{
+    public Rice( string riceType)
+    {
+        Console.WriteLine($"Rice constructor called with riceType: {riceType}");
+    }
+}
+
+public class Biriyani : Rice
+{
+    // if we create a Biriyani object, first the constructor of the base class Rice will be called, and then the constructor of the Biriyani class will be called.
+    // this is called constructor chaining.
+    // since the Rice class has a constructor that requires a parameter, we need to call that constructor from the Biriyani constructor using the base keyword.
+    public Biriyani()
+        : base("Basmati")
+    {
+        Console.WriteLine("Biriyani constructor called.");
+    }
+
+    // this() is used to call another constructor in the same class. In this case, it calls the parameterless constructor of the Biriyani class before executing the body of this constructor.
+    public Biriyani(string biriyaniType)
+        : this()
+    {
+        Console.WriteLine($"Biriyani constructor called with biriyaniType: {biriyaniType}");
+    }
+}

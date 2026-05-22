@@ -2,6 +2,12 @@
 namespace OOPS;
 public class Animal
 {
+    // a private field
+    private int _populationCount = 0;
+
+    // this is a constant field, its value cannot be changed after it is initialized.
+    public const string _kingdom = "Animalia"; 
+    
     // this property is public, so it can be accessed from anywhere
     public string Name { get; set; } = "Tommy";
  

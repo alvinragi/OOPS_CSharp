@@ -87,5 +87,11 @@ public class Program
         plant.PrintValue<string>("Healthy");
         plant.PrintValue<int>(100);
 
+
+        // 6. StructsAndInterfaces.cs
+        Bicycle bicycle = new() { Speed = 15, Gear = 3 };
+        Bicycle anotherBicycle = bicycle; // This creates a copy of the bicycle struct, since structs are value types.
+        anotherBicycle.Speed = 20; // This change does not affect the original bicycle instance.
+        Console.WriteLine($"Another Bicycle Speed: {anotherBicycle.Speed}, Another Bicycle Gear: {anotherBicycle.Gear}");
     }
 }
