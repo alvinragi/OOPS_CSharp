@@ -7,6 +7,7 @@ public class Program
         // 1. AccessModifiers.cs
         Dog dog = new();
         dog.DisplayInfo();
+
         Puppy puppy = new();
         puppy.DisplayAnimalInfo();
 
@@ -15,21 +16,35 @@ public class Program
         Circle circle = new() { ShapeName = "Circle", Radius = 5 };
         circle.ShowShapeInfo();
         // calling the static method in the Rectangle class without creating an instance of the Rectangle class.
+
         Rectangle.GetArea(4, 5);
         //triangle is a partial class where the below methods are defined in different class files.
+
         Triangle triangle = new() { ShapeName = "Triangle", Base = 4, Height = 5 };
         // calling the asynchronous method to display triangle information, simulating a long-running operation.
         await triangle.DisplayTriangleInfoAsync();
         triangle.GetArea();
 
+        Square square = new(5, "Red");
+        Square secondSquare = new(5, "Red");
+        // creates a new instance of Square with the same values as the original square.
+        Square anotherSquare = square with { Color = "Blue" }; 
+        // true, because records have value-based equality by default.
+        Console.WriteLine( square == secondSquare); 
+        // we can easily console properties of record because tostring method is automatically generated for records.
+        Console.WriteLine(anotherSquare);
+
+
         // 3. FieldAndConstructorModifiers.cs
         Fruit fruit = new("Apple", 100) { Taste = "Sweet", Type = "Citrus" };
         fruit.CalculateCalories();
         Console.WriteLine($"Fruit Name: {fruit.name}, Taste: {fruit.Taste}, Type: {fruit.Type}, Calories: {fruit.Calories}");
+
         // we cannot initialize Drinks using a constructor since it has a private constructor
         // we can only create an instance of Drinks using the static method CreateDrinks() defined in the Drinks class.
         Drinks drinks = Drinks.CreateDrinks();
         Console.WriteLine($"Drink Name: {drinks.Name}");
+
         Cakes cake = new() { CakeName = "Vanilla Cake" };
         Console.WriteLine($"Cake Name: {cake.CakeName}, Default Dessert: {cake.SecondaryOption}");
 
@@ -60,6 +75,17 @@ public class Program
         Places.OutChangeName(out city2);
         Console.WriteLine(city2);
         Places.InChangeName(city);
+
+        // 5. Generics.cs
+        Plant<Flower, int> plant =
+            new Plant<Flower, int>();
+
+        plant.PlantData.Species = "Rose";
+        plant.AddGrowthValue(10);
+        plant.PlantData.Water();
+        // Since PrintValue is a generic method, we can call it with different types of arguments.
+        plant.PrintValue<string>("Healthy");
+        plant.PrintValue<int>(100);
 
     }
 }

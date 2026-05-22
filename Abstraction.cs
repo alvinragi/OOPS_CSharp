@@ -53,6 +53,15 @@ public class Circle : Shape
 // cannot create object (instantiation) of static class, and all members of a static class must be static as well.
 public static class Rectangle
 {
+    public static string numberOfSides;
+
+    // static constructor is used to initialize static members of the class. 
+    // it only runs once, when the class is first accessed, and cannot be called directly.
+    static Rectangle()
+    {
+        numberOfSides = "4";
+        Console.WriteLine($"numberOfSides in Rectangle: {numberOfSides}");
+    }
     // static methods can be called without creating an instance of the class, 
     // they belong to the class itself rather than any specific object.
     public static double GetArea(double width, double height)
@@ -92,6 +101,9 @@ public partial class Triangle
         await Task.Run(() => Console.WriteLine($"Shape Name: {ShapeName}, Area: {GetArea()}"));
     }
 }
+
+// Records classes can be used to create immutable data objects with value-based equality.
+public record Square(int Side, string Color);
 
 // We cannot inherit from a sealed class, and a sealed class cannot be used as a base class for any other class. 
 //Sealed classes are often used to prevent further inheritance and to provide a final implementation of a class.
